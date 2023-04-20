@@ -23,50 +23,7 @@ def home():
     
 @app.route('/camera', methods = ['GET', 'POST'])
 def camera():
-    # i=0
-
-    # GR_dict={0:(0,255,0),1:(0,0,255)}
-    # model = tf.keras.models.load_model('model.h5')
-    # face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    # output=[]
-    # cap = cv2.VideoCapture(0)
-    # while (i<=60):
-    #     ret, img = cap.read()
-    #     faces = face_cascade.detectMultiScale(img,1.05,5)
-
-    #     for x,y,w,h in faces:
-
-    #         face_img = img[y:y+h,x:x+w] 
-
-    #         resized = cv2.resize(face_img,(224,224))
-    #         reshaped=resized.reshape(1, 224,224,3)/255
-    #         predictions = model.predict(reshaped)
-
-    #         max_index = np.argmax(predictions[0])
-
-    #         emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'neutral', 'surprise')
-    #         predicted_emotion = emotions[max_index]
-    #         output.append(predicted_emotion)
-            
-            
-            
-    #         cv2.rectangle(img,(x,y),(x+w,y+h),GR_dict[1],2)
-    #         cv2.rectangle(img,(x,y-40),(x+w,y),GR_dict[1],-1)
-    #         cv2.putText(img, predicted_emotion, (x, y-10),cv2.FONT_HERSHEY_SIMPLEX,0.8,(255,255,255),2)
-    #     i = i+1
-
-    #     cv2.imshow('LIVE', img)
-    #     key = cv2.waitKey(1)
-    #     if key == 27: 
-    #         cap.release()
-    #         cv2.destroyAllWindows()
-    #         break
-    # print(output)
-    # cap.release()
-    # cv2.destroyAllWindows()
-    # final_output1 = st.mode(output)
-    # return render_template("buttons.html",final_output=final_output1)
-
+  
     face_classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     classifier =load_model('model.h5')
 
@@ -86,7 +43,7 @@ def camera():
             cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,255),2)
             roi_gray = gray[y:y+h,x:x+w]
             roi_gray = cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
-
+    
 
 
             if np.sum([roi_gray])!=0:
